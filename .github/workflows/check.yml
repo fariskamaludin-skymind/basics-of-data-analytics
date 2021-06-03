@@ -18,4 +18,4 @@ jobs:
 
       - shell: bash
         run: |
-          conda env list
+          conda list
