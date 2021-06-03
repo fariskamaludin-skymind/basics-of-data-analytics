@@ -18,4 +18,6 @@ jobs:
 
       - shell: bash
         run: |
-          conda list
+          conda install matplotlib
+          conda install pandas
+          pip install treon
