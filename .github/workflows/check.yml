@@ -21,6 +21,13 @@ jobs:
           conda install matplotlib
           conda install pandas
           pip install treon
-          treon
+          shopt -s globstar
+      
+      - shell: bash -l {0}
+        run: |
+          for i in **/solution/** ; do \
+            treon "$i" \
+          done 
+
 
     
