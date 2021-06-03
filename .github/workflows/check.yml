@@ -15,3 +15,4 @@ jobs:
         run: |
           bash --version
           shopt -s globstar
+          shopt globstar
