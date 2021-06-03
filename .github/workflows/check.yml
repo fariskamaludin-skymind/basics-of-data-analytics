@@ -18,6 +18,7 @@ jobs:
 
       - shell: bash
         run: |
+          conda activate test
           conda install matplotlib
           conda install pandas
           pip install treon
