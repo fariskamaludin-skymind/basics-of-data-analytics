@@ -25,9 +25,7 @@ jobs:
       
       - shell: bash -l {0}
         run: |
-          for i in **/solution/** ; do \
-            treon "$i" \
-          done 
+          for i in **/solution/** ; do treon "$i" done
 
 
     
