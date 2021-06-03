@@ -25,7 +25,7 @@ jobs:
       
       - shell: bash -l {0}
         run: |
-          for i in **/{S,s}olution/**; do 
+          for i in **/{E,e}xercise/**; do 
             treon "$i" || continue
           done
 
