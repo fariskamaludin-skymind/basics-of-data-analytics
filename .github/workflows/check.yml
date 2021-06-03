@@ -21,7 +21,6 @@ jobs:
           conda install matplotlib
           conda install pandas
           pip install treon
-
-      - shell: bash
-        run: |
           treon
+
+    
