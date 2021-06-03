@@ -1,7 +1,8 @@
 name: Test
 
 on:
-  push: main
+  push:
+    branches: main
 
 jobs:
   test:
@@ -14,4 +15,3 @@ jobs:
         run: |
           bash --version
           shopt globstar
-          
