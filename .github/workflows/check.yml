@@ -17,7 +17,7 @@ jobs:
       - name: Cache conda
         uses: actions/cache@v2
         env:
-          # Increase this value to reset cache if etc/example-environment.yml has not changed
+          # Increase this value to reset cache if .env/environment.yml has not changed
           CACHE_NUMBER: 0
         with:
           path: ~/conda_pkgs_dir
@@ -33,8 +33,8 @@ jobs:
 
       - shell: bash -l {0}
         run: |
-          conda install matplotlib pandas
-          pip install treon
+          # conda install matplotlib pandas
+          # pip install treon
           shopt -s globstar
       
       - shell: bash -l {0}
