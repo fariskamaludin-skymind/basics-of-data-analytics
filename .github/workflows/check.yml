@@ -8,6 +8,9 @@ jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        type: ["{S,s}olution", "{E,e}xercise"]
     steps:
       - uses: actions/checkout@v2
 
@@ -25,7 +28,7 @@ jobs:
       
       - shell: bash -l {0}
         run: |
-          for i in **/{S,s}olution/**; do 
+          for i in **/${{ matrix.type }}/**; do 
             treon "$i" || continue
           done
 
