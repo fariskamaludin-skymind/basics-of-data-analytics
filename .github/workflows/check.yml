@@ -21,8 +21,7 @@ jobs:
 
       - shell: bash -l {0}
         run: |
-          conda install matplotlib
-          conda install pandas
+          conda install matplotlib pandas
           pip install treon
           shopt -s globstar
       
