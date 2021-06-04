@@ -1,6 +1,0 @@
-name: stats
-dependencies:
-  - matplotlib
-  - pandas
-  - pip:
-    - treon
