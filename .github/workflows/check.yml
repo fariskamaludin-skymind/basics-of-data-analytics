@@ -30,12 +30,15 @@ jobs:
         shell: bash -l {0}
         run: | 
           pip install treon
+          python --version
+          bash -version
+          shopt
           shopt -s globstar
       
       - name: Execute Treon 
         shell: bash -l {0}
         run: |
-          for i in **/{S,s}olution/**; do 
+          for i in **/solution/**; do 
             treon "$i" 
           done
 
@@ -64,7 +67,7 @@ jobs:
       - name: Execute Treon 
         shell: bash -l {0}
         run: |
-          for i in **/{E,e}xercise/**; do 
+          for i in **/exercise/**; do 
             treon "$i" || continue
           done
 
