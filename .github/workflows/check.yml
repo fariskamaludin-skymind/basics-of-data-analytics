@@ -17,18 +17,6 @@ jobs:
       - name: Checkout repo into GitHub's runner
         uses: actions/checkout@v2
 
-      - uses: actions/checkout@v2
-      - name: Cache conda
-        uses: actions/cache@v2
-        env:
-          # Increase this value to reset cache if etc/example-environment.yml has not changed
-          CACHE_NUMBER: 0
-        with:
-          path: ~/conda_pkgs_dir
-          key:
-            ${{ runner.os }}-conda-${{ env.CACHE_NUMBER }}-${{
-            hashFiles('environment.yml') }}
-
         # Setup mini-conda environment
       - name: Setup Conda 
         uses: conda-incubator/setup-miniconda@v2
@@ -56,18 +44,6 @@ jobs:
     steps:
       - name: Checkout repo into GitHub's runner
         uses: actions/checkout@v2
-
-      - uses: actions/checkout@v2
-      - name: Cache conda
-        uses: actions/cache@v2
-        env:
-          # Increase this value to reset cache if etc/example-environment.yml has not changed
-          CACHE_NUMBER: 0
-        with:
-          path: ~/conda_pkgs_dir
-          key:
-            ${{ runner.os }}-conda-${{ env.CACHE_NUMBER }}-${{
-            hashFiles('environment.yml') }}
 
         # Setup mini-conda environment
       - name: Setup Conda 
