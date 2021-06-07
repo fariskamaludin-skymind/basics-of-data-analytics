@@ -1,7 +1,6 @@
 name: basics-of-data-analytics---
 channels:
   - defaults
-  - conda-forge
 dependencies:
   - argon2-cffi=20.1.0
   - async_generator=1.10
