@@ -1,33 +1,70 @@
-name: Test
+name: Check & Test Jupyter Notebook execution
 
 on:
   push:
-    branches: main
+    branches: 
+      - main
+      - faris_add_codetest
+  
+  pull_request:
+    types: [synchronize, review_requested]
 
 jobs:
-  test:
-    name: Test
+  check_solution:
+    name: Test Solution folder
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        type: ["{S,s}olution", "{E,e}xercise"]
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout repo into GitHub's runner
+        uses: actions/checkout@v2
 
-      - name: Setup Conda
+        # Setup mini-conda environment
+      - name: Setup Conda 
         uses: conda-incubator/setup-miniconda@v2
         with:
-          python-version: "3.9"
+          activate-environment: basics-of-data-analytics
+          environment-file: "environment.yml"
+          auto-activate-base: false
 
-      - shell: bash -l {0}
-        run: |
-          conda install matplotlib pandas
+        # Install dependencies into conda env / Set globstar on to allow "**" pattern in bash
+      - name: Install required dependencies 
+        shell: bash -l {0}
+        run: | 
           pip install treon
           shopt -s globstar
       
-      - shell: bash -l {0}
+      - name: Execute Treon 
+        shell: bash -l {0}
         run: |
-          for i in **/${{ matrix.type }}/**; do 
+          for i in **/{S,s}olution/**; do 
+            treon "$i" 
+          done
+
+  check_exercise:
+    name: Test Exercise folder
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo into GitHub's runner
+        uses: actions/checkout@v2
+
+        # Setup mini-conda environment
+      - name: Setup Conda 
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          activate-environment: basics-of-data-analytics
+          environment-file: "environment.yml"
+          auto-activate-base: false
+
+        # Install dependencies into conda env / Set globstar on to allow "**" pattern in bash
+      - name: Install required dependencies 
+        shell: bash -l {0}
+        run: | 
+          pip install treon
+          shopt -s globstar
+      
+      - name: Execute Treon 
+        shell: bash -l {0}
+        run: |
+          for i in **/{E,e}xercise/**; do 
             treon "$i" || continue
           done
 
