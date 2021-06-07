@@ -30,10 +30,7 @@ jobs:
         shell: bash -l {0}
         run: | 
           pip install treon
-          python --version
-          bash -version
-          shopt
-          shopt -s globstar
+          shopt 
       
       - name: Execute Treon 
         shell: bash -l {0}
