@@ -24,6 +24,7 @@ jobs:
           activate-environment: basics-of-data-analytics
           environment-file: "environment.yml"
           auto-activate-base: false
+          python-version: 3.7.10
 
         # Install dependencies into conda env / Set globstar on to allow "**" pattern in bash
       - name: Install required dependencies 
@@ -53,6 +54,7 @@ jobs:
           activate-environment: basics-of-data-analytics
           environment-file: "environment.yml"
           auto-activate-base: false
+          python-version: 3.7.10
 
         # Install dependencies into conda env / Set globstar on to allow "**" pattern in bash
       - name: Install required dependencies 
