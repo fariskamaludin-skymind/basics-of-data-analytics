@@ -19,7 +19,7 @@ jobs:
         # Setup mini-conda environment
       - name: Setup Conda 
         uses: conda-incubator/setup-miniconda@v2
-        #with:
+        with:
           #activate-environment: basics-of-data-analytics
           #environment-file: "environment.yml"
           auto-activate-base: false
