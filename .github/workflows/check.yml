@@ -4,7 +4,6 @@ on:
   push:
     branches: 
       - main
-      - faris_add_codetest
   
   pull_request:
     types: [synchronize, review_requested]
@@ -21,7 +20,7 @@ jobs:
       - name: Setup Conda 
         uses: conda-incubator/setup-miniconda@v2
         with:
-          activate-environment: basics-of-data-analytics
+          #activate-environment: basics-of-data-analytics
           environment-file: "environment.yml"
           auto-activate-base: false
 
@@ -49,7 +48,7 @@ jobs:
       - name: Setup Conda 
         uses: conda-incubator/setup-miniconda@v2
         with:
-          activate-environment: basics-of-data-analytics
+          #activate-environment: basics-of-data-analytics
           environment-file: "environment.yml"
           auto-activate-base: false
 
