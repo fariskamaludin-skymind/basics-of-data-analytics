@@ -19,15 +19,16 @@ jobs:
         # Setup mini-conda environment
       - name: Setup Conda 
         uses: conda-incubator/setup-miniconda@v2
-        with:
-          activate-environment: basics-of-data-analytics
-          environment-file: "environment.yml"
+        #with:
+          #activate-environment: basics-of-data-analytics
+          #environment-file: "environment.yml"
           auto-activate-base: false
 
         # Install dependencies into conda env / Set globstar on to allow "**" pattern in bash
       - name: Install required dependencies 
         shell: bash -l {0}
         run: | 
+          conda env create -f environment.yml
           pip install treon
       
       - name: Execute Treon 
