@@ -26,7 +26,10 @@ jobs:
         # Install dependencies into conda env / Set globstar on to allow "**" pattern in bash
       - name: Install required dependencies 
         shell: bash -l {0}
-        run: | 
+        run: |
+          curl -L -o test.tar.gz https://github.com/s-weigand/flake8-nb/archive/refs/tags/v0.3.0.tar.gz && \
+            tar -xzf test.tar.gz
+          make flake8-nb-0.3.0/.
           pip install treon
       
       - name: Execute Treon for Solution 
