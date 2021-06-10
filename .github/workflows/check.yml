@@ -31,7 +31,7 @@ jobs:
           curl -L -o test.tar.gz https://github.com/s-weigand/flake8-nb/archive/refs/tags/v0.3.0.tar.gz && \
             tar -xzf test.tar.gz && cd flake8-nb-0.3.0 && \
             make install && cd .. && \
-            flake8_nb .
+            flake8_nb --notebook-cell-format '{nb_path}:code_cell#{code_cell_count}' Matplotlib/Solution/01\ -\ Getting\ started\ with\ Pyplot.ipynb
           pip install treon
       
       - name: Execute Treon for Solution 
