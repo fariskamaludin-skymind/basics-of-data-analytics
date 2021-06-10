@@ -22,6 +22,7 @@ jobs:
         with:
           activate-environment: basics-of-data-analytics
           auto-activate-base: false
+          python-version: 3.9
 
         # Install dependencies into conda env / Set globstar on to allow "**" pattern in bash
       - name: Install required dependencies 
@@ -29,7 +30,7 @@ jobs:
         run: |
           curl -L -o test.tar.gz https://github.com/s-weigand/flake8-nb/archive/refs/tags/v0.3.0.tar.gz && \
             tar -xzf test.tar.gz && ls -la && \
-            make ${GITHUB_WORKSPACE}/flake8-nb-0.3.0/ && \
+            make install -f flake8-nb-0.3.0/Makefile && \
             flake8_nb .
           pip install treon
       
