@@ -32,9 +32,11 @@ jobs:
 
           shopt -s globstar
 
-          for i in **/exercise/**.ipynb; do
-            flake8_nb --select E9,F8 --notebook-cell-format '{nb_path}:code_cell#{code_cell_count}' "$i"
-          done
+          # for i in **/exercise/**.ipynb; do
+          #  flake8_nb --select E9,F8 --notebook-cell-format '{nb_path}:code_cell#{code_cell_count}' "$i"
+          # done
+
+          find . ! -path '*/\.*' -type f -name "*.ipynb" -exec flake8_nb --select E9,F8 --notebook-cell-format '{nb_path}:code_cell#{code_cell_count}' '{}' \;
       
 
  
