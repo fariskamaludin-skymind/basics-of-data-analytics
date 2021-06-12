@@ -10,7 +10,7 @@ on:
 
 jobs:
   check_ubuntu:
-    name: Test Solution folder
+    name: Test Solution folder using Exercise
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo into GitHub's runner
@@ -43,7 +43,7 @@ jobs:
         
 
   check_windows:
-    name: Test Solution folder
+    name: Test Solution folder using Windows
     runs-on: windows-latest
     steps:
       - name: Checkout repo into GitHub's runner
@@ -67,7 +67,7 @@ jobs:
 
           shopt -s globstar
 
-          for i in **/{S,s}olution/**.ipynb; do
+          for i in **/solution/**.ipynb; do
             #flake8_nb --select E9,F8 --notebook-cell-format '{nb_path}:code_cell#{code_cell_count}' "$i"
             treon "$i"
           done
