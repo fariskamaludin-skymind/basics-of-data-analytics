@@ -9,7 +9,7 @@ on:
     types: [synchronize, review_requested]
 
 jobs:
-  check_solution:
+  check_ubuntu:
     name: Test Solution folder
     runs-on: ubuntu-latest
     steps:
@@ -39,9 +39,40 @@ jobs:
             treon "$i"
           done
 
-          # find . ! -path '*/\.*' -type f -path '*/exercise/*' -name "*.ipynb" -exec flake8_nb --select E9,F8 --notebook-cell-format '{nb_path}:code_cell#{code_cell_count}' '{}' \;
+          #find . ! -path '*/\.*' -type f -path '*/exercise/*' -name "*.ipynb" -exec flake8_nb --select E9,F8 --notebook-cell-format '{nb_path}:code_cell#{code_cell_count}' '{}' \;
         
-              
+
+  check_windows:
+    name: Test Solution folder
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repo into GitHub's runner
+        uses: actions/checkout@v2
+
+        # Setup mini-conda environment
+      - name: Setup Conda 
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          activate-environment: basics-of-data-analytics
+          auto-activate-base: false
+          environment-file: environment.yml
+          #python-version: 3.9
+
+        # Install dependencies into conda env / Set globstar on to allow "**" pattern in bash
+      - name: Install required dependencies 
+        shell: bash -l {0}
+        run: |
+          #pip install https://github.com/s-weigand/flake8-nb/archive/refs/tags/v0.3.0.tar.gz
+          pip install treon
+
+          shopt -s globstar
+
+          for i in **/{S,s}olution/**.ipynb; do
+            #flake8_nb --select E9,F8 --notebook-cell-format '{nb_path}:code_cell#{code_cell_count}' "$i"
+            treon "$i"
+          done
+
+          #find . ! -path '*/\.*' -type f -path '*/exercise/*' -name "*.ipynb" -exec flake8_nb --select E9,F8 --notebook-cell-format '{nb_path}:code_cell#{code_cell_count}' '{}' \;              
 
  
 
