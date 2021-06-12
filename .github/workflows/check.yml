@@ -36,7 +36,7 @@ jobs:
           #  flake8_nb --select E9,F8 --notebook-cell-format '{nb_path}:code_cell#{code_cell_count}' "$i"
           # done
 
-          find . ! -path '*/\.*' -type f -path '*/solution/*' -name "*.ipynb" -exec flake8_nb --notebook-cell-format '{nb_path}:code_cell#{code_cell_count}' '{}' \;
+          find . ! -path '*/\.*' -type f -path '*/exercise/*' -name "*.ipynb" -exec flake8_nb --select E9,F8 --notebook-cell-format '{nb_path}:code_cell#{code_cell_count}' '{}' \;
       
 
  
