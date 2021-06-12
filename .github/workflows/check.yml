@@ -29,10 +29,10 @@ jobs:
         shell: bash -l {0}
         run: |
           pip install https://github.com/s-weigand/flake8-nb/archive/refs/tags/v0.3.0.tar.gz
-          
+
           shopt -s globstar
 
-          for i in **/solution/**.ipynb; do
+          for i in **/solution/**; do
             flake8_nb --notebook-cell-format '{nb_path}:code_cell#{code_cell_count}' $i
           done
       
