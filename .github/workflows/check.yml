@@ -34,7 +34,7 @@ jobs:
 
           shopt -s globstar
 
-          for i in **/solution/**.ipynb; do
+          for i in **/{S,s}olution/**.ipynb; do
             #flake8_nb --select E9,F8 --notebook-cell-format '{nb_path}:code_cell#{code_cell_count}' "$i"
             treon "$i"
           done
