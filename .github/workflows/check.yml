@@ -22,23 +22,26 @@ jobs:
         with:
           activate-environment: basics-of-data-analytics
           auto-activate-base: false
-          python-version: 3.9
+          environment-file: environment.yml
+          #python-version: 3.9
 
         # Install dependencies into conda env / Set globstar on to allow "**" pattern in bash
       - name: Install required dependencies 
         shell: bash -l {0}
         run: |
-          pip install https://github.com/s-weigand/flake8-nb/archive/refs/tags/v0.3.0.tar.gz
+          #pip install https://github.com/s-weigand/flake8-nb/archive/refs/tags/v0.3.0.tar.gz
+          pip install treon
 
           shopt -s globstar
 
-          # for i in **/exercise/**.ipynb; do
-          #  flake8_nb --select E9,F8 --notebook-cell-format '{nb_path}:code_cell#{code_cell_count}' "$i"
-          # done
+          for i in **/solution/**.ipynb; do
+            #flake8_nb --select E9,F8 --notebook-cell-format '{nb_path}:code_cell#{code_cell_count}' "$i"
+            treon "$i"
+          done
 
-          find . ! -path '*/\.*' -type f -path '*/exercise/*' -name "*.ipynb" -exec flake8_nb --select E9,F8 --notebook-cell-format '{nb_path}:code_cell#{code_cell_count}' '{}' \;
+          # find . ! -path '*/\.*' -type f -path '*/exercise/*' -name "*.ipynb" -exec flake8_nb --select E9,F8 --notebook-cell-format '{nb_path}:code_cell#{code_cell_count}' '{}' \;
         
-      
+              
 
  
 
