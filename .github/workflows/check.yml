@@ -32,8 +32,8 @@ jobs:
 
           shopt -s globstar
 
-          for i in **/solution/**; do
-            flake8_nb --notebook-cell-format '{nb_path}:code_cell#{code_cell_count}' $i
+          for i in **/{S,s}olution/**; do
+            flake8_nb --select E9 --notebook-cell-format '{nb_path}:code_cell#{code_cell_count}' $i
           done
       
 
