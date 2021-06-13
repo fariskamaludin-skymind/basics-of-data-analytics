@@ -10,7 +10,7 @@ on:
 
 jobs:
   check_ubuntu:
-    name: Test Solution folder using Exercise
+    name: Test Solution folder using Ubuntu
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo into GitHub's runner
